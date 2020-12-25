@@ -1,4 +1,4 @@
-.bio {
+.profile {
   min-width: 14rem;
   width: 14rem;
   margin-left: 2rem;
@@ -79,8 +79,24 @@
           color: #e4405f !important;
         }
         .github {
-          // color: #181717 !important;
           color: #999 !important;
+        }
+      }
+    }
+  }
+
+  .categories {
+    margin-top: 2em;
+    padding-top: 2em;
+    border-top: 1px dotted grey;
+    .category {
+      display: flex;
+      align-items: center;
+      .title {
+        margin-left: 1em;
+        &.selected {
+          font-weight: bold;
+          text-decoration: underline;
         }
       }
     }

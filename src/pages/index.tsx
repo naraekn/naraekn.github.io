@@ -7,7 +7,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
-import Bio from '../components/Bio';
+import Profile from '../components/Profile/Profile';
 import './styles/index.scss';
 import PostList from '../components/PostList';
 
@@ -25,7 +25,7 @@ const IndexPage = (props: IndexPageProps) => {
     <Layout>
       <SEO title={title} />
       <div className="index-wrap">
-        <Bio />
+        <Profile />
         <div className="index-post-list-wrap">
           <PostList posts={posts} />
           {posts.length < 100 ? null : (
@@ -63,6 +63,7 @@ export const pageQuery = graphql`
             update(formatString: "MMM DD, YYYY")
             title
             tags
+            category
           }
         }
       }

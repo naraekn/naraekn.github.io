@@ -29,6 +29,12 @@ module.exports = {
   enablePostOfContents: true,     // TableOfContents activation (Type of Value: Boolean. Not String)
   disqusShortname: '',            // comments (Disqus sort-name)
   enableSocialShare: true,        // Social share icon activation (Type of Value: Boolean. Not String)
+  categories: [
+    'Today I Leared',
+    '서평',
+    '스터디회고',
+    'Experience',
+  ],
 
   /** Optional */
   googleAnalytics: 'UA-176299896-1',     // Google Analytics TrackingID. ex.'UA-123456789-0'

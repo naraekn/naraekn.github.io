@@ -12,7 +12,7 @@ keywords:
   - CodeSoom
   - 회고
   - 프론트엔드
-subtitle: 어디이게 되나
+subtitle: Today I Learned
 ---
 
 

@@ -12,7 +12,8 @@ keywords:
   - CodeSoom
   - 회고
   - 프론트엔드
-subtitle: 어디이게 되나
+subtitle: 부제목
+category: 서평
 ---
 
 ## 임시 게시물 포스트
