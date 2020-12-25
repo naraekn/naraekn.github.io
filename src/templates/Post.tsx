@@ -1,28 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import * as React from 'react';
+import React from 'react';
 import { useEffect, useState, useCallback, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 import { graphql, Link } from 'gatsby';
-import moment from 'moment';
 import { FontAwesomeIcon as Fa } from '@fortawesome/react-fontawesome';
-import { faListUl, faLayerGroup, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faLayerGroup, faListUl } from '@fortawesome/free-solid-svg-icons';
 import AdSense from 'react-adsense';
-import {
-  FacebookShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-  RedditShareButton,
-  PocketShareButton,
-  EmailShareButton,
-  FacebookIcon,
-  TwitterIcon,
-  LinkedinIcon,
-  RedditIcon,
-  PocketIcon,
-  EmailIcon,
-} from 'react-share';
 import { throttle } from 'lodash';
 
 import './post.scss';
@@ -35,8 +20,11 @@ import SEO from '../components/seo';
 
 import { RootState } from '../state/reducer';
 import config from '../../_config';
+import SocialShare from './SocialShare';
+import { getPostData } from './constant';
+import PostSeries from './PostSeries';
 
-interface postProps {
+interface Props {
   data: any;
   pageContext: { slug: string; series: any[]; lastmod: string };
 }
@@ -47,10 +35,9 @@ interface iConfig {
   disqusShortname?: string;
 }
 
-const Post = (props: postProps) => {
+export default function Post({ data, pageContext }: Props) {
   const isSSR = typeof window === 'undefined';
 
-  const { data, pageContext } = props;
   const isMobile = useSelector((state: RootState) => state.isMobile);
   const [yList, setYList] = useState([] as number[]);
   const [isInsideToc, setIsInsideToc] = useState(false);
@@ -58,12 +45,15 @@ const Post = (props: postProps) => {
 
   const { markdownRemark } = data;
   const { frontmatter, html, tableOfContents, fields, excerpt } = markdownRemark;
-  const { title, date, tags, keywords } = frontmatter;
+  const { title, date, tags, keywords, subtitle } = frontmatter;
+  
   let update = frontmatter.update;
   if (Number(update?.split(',')[1]) === 1) update = null;
+  
   const { slug } = fields;
   const { series } = pageContext;
   const { enablePostOfContents, disqusShortname, enableSocialShare }: iConfig = config;
+
   const isTableOfContents = enablePostOfContents && tableOfContents !== '';
   const isDevelopment = process.env.NODE_ENV === 'development';
   const isDisqus: boolean = disqusShortname ? true : false;
@@ -166,40 +156,7 @@ const Post = (props: postProps) => {
       <Helmet>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script type="application/ld+json">
-          {`
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "datePublished": "${moment(new Date(date)).toISOString()}",
-  ${update ? `"dateModified": "${moment(new Date(update)).toISOString()}",` : ''}
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "${config.siteUrl}"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "${config.name}"
-  },
-  "headline": "${title}",
-  ${
-    config.profileImageFileName
-      ? `"publisher": {
-    "@type" : "organization",
-    "name" : "${config.name}",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "${config.siteUrl}${require(`../images/${config.profileImageFileName}`)}"
-    }
-  },
-  "image": ["${config.siteUrl}${require(`../images/${config.profileImageFileName}`)}"]`
-      : `"publisher": {
-    "@type" : "organization",
-    "name" : "${config.name}"
-  },
-  "image": []`
-  }
-}
-`}
+          { getPostData({ config, update, title, date }) }
         </script>
       </Helmet>
 
@@ -209,27 +166,27 @@ const Post = (props: postProps) => {
         <div className="blog-post-container">
           <div className="blog-post">
             <h1 className="blog-post-title">{title}</h1>
-
+            
             <div className="blog-post-info">
               <div className="date-wrap">
                 <span className="write-date">{date}</span>
-                {update ? (
+                {update && (
                   <>
                     <span>(</span>
                     <span className="update-date">{`Last updated: ${update}`}</span>
                     <span>)</span>
                   </>
-                ) : null}
+                )}
               </div>
 
-              {tags.length && tags[0] !== 'undefined' ? (
+              {tags.length && tags[0] !== 'undefined' && (
                 <>
                   <span className="dot">·</span>
                   <ul className="blog-post-tag-list">{mapTags}</ul>
                 </>
-              ) : null}
+              )}
 
-              {!isTableOfContents ? null : (
+              {/* {isTableOfContents && (
                 <div className="blog-post-inside-toc">
                   <div
                     className="toc-button"
@@ -243,68 +200,21 @@ const Post = (props: postProps) => {
                     <Fa icon={faListUl} />
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
 
-            {!isTableOfContents ? null : (
+            {isTableOfContents && (
               <div className="inside-toc-wrap" style={{ display: isInsideToc ? 'flex' : 'none' }}>
                 <Toc isOutside={false} toc={tableOfContents} />
               </div>
             )}
 
-            {series.length > 1 ? (
-              <>
-                <div className="series">
-                  <div className="series-head">
-                    <span className="head">Post Series</span>
-                    <div className="icon-wrap">
-                      <Fa icon={faLayerGroup} />
-                    </div>
-                  </div>
-                  <ul className="series-list">{mapSeries}</ul>
-                </div>
-              </>
-            ) : null}
+            {series.length > 1 && <PostSeries series={series} slug={slug}/>}
 
             <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: html }} />
           </div>
 
-          {isSocialShare ? (
-            <div className="social-share">
-              <ul>
-                <li className="social-share-item email">
-                  <EmailShareButton url={config.siteUrl + slug}>
-                    <EmailIcon size={24} round={true} />
-                  </EmailShareButton>
-                </li>
-                <li className="social-share-item facebook">
-                  <FacebookShareButton url={config.siteUrl + slug}>
-                    <FacebookIcon size={24} round={true} />
-                  </FacebookShareButton>
-                </li>
-                <li className="social-share-item twitter">
-                  <TwitterShareButton url={config.siteUrl + slug}>
-                    <TwitterIcon size={24} round={true} />
-                  </TwitterShareButton>
-                </li>
-                <li className="social-share-item linkedin">
-                  <LinkedinShareButton url={config.siteUrl + slug}>
-                    <LinkedinIcon size={24} round={true} />
-                  </LinkedinShareButton>
-                </li>
-                <li className="social-share-item reddit">
-                  <RedditShareButton url={config.siteUrl + slug}>
-                    <RedditIcon size={24} round={true} />
-                  </RedditShareButton>
-                </li>
-                <li className="social-share-item pocket">
-                  <PocketShareButton url={config.siteUrl + slug}>
-                    <PocketIcon size={24} round={true} />
-                  </PocketShareButton>
-                </li>
-              </ul>
-            </div>
-          ) : null}
+          { isSocialShare && <SocialShare config={config} slug={slug}/> }
 
           {isDevelopment ? (
             <>
@@ -336,7 +246,7 @@ const Post = (props: postProps) => {
           )}
         </div>
 
-        {!isTableOfContents ? null : <Toc isOutside={true} toc={tableOfContents} />}
+        {isTableOfContents && <Toc isOutside={true} toc={tableOfContents} />}
       </Layout>
     </>
   );
@@ -357,9 +267,8 @@ export const pageQuery = graphql`
         tags
         keywords
         update(formatString: "MMM DD, YYYY")
+        subtitle
       }
     }
   }
 `;
-
-export default Post;
