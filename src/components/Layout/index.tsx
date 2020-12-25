@@ -68,13 +68,14 @@ const Layout = (props: LayoutPropsType) => {
         <div id="content">
           <main>{children}</main>
           <footer>
-            <span>{`© ${new Date().getFullYear()} ${data.site.siteMetadata.author} | Theme by `}</span>
+            <span>{`© ${new Date().getFullYear()} ${data.site.siteMetadata.author} | Initialized by `}</span>
             <a href="https://github.com/junhobaik">JunhoBaik</a>
+            <span>{` | Developed by `}</span>
+            <a href="https://github.com/naraekn">NanKim</a>
             <span>{` | Built with `}</span>
             <a href="https://www.gatsbyjs.org">Gatsby</a>
           </footer>
         </div>
-
         <div
           id="top"
           style={{
