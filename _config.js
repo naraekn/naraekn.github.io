@@ -16,8 +16,8 @@ module.exports = {
   /** Home > Bio information*/
   comment: `Nan's Development Blog`,
   name: 'Nan Kim',
-  company: '',
-  location: 'Korea',
+  company: 'Market Kurly',
+  location: 'Seoul, Korea',
   email: 'naraekn@gmail.com',
   website: 'https://naraekn.github.io',                                   // ex.'https://junhobaik.github.io'
   linkedin: '',                                                          // ex.'https://www.linkedin.com/in/junho-baik-16073a19ab'
