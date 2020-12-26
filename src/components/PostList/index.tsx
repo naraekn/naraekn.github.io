@@ -1,20 +1,22 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import * as React from 'react';
+import React from 'react';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { Link } from 'gatsby';
 import { throttle } from 'lodash';
 
 import './postList.scss';
 
-interface PostListProps {
+interface Props {
   posts: any[];
+  title?: string;
 }
 
-const PostList = (props: PostListProps) => {
-  const { posts } = props;
+const PostList = ({
+  posts,
+  title,
+}: Props) => {
   const [showCnt, setShowCnt] = useState(10);
   const [currentPostList, setCurrentPostList] = useState<JSX.Element[]>([]);
+  
   const sortedPosts = useMemo(() => {
     posts.sort((a: any, b: any) => {
       const af = a.node.frontmatter;
@@ -113,6 +115,9 @@ const PostList = (props: PostListProps) => {
 
   return (
     <div className="post-list">
+      <div>
+        { title && <div className="post-title">{title}</div> }
+      </div>
       <ul>{currentPostList}</ul>
     </div>
   );

@@ -26,7 +26,7 @@ export default function PostsPage ({
       <div className="index-wrap">
         <Navigation />
         <div className="index-post-list-wrap">
-          <PostList posts={posts} />
+          <PostList posts={posts} title="All Posts" />
           {posts.length < 100 ? null : (
             <div className="show-more-posts">
               <div className="show-more-btn">
