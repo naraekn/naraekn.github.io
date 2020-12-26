@@ -2,7 +2,7 @@ import React from 'react';
 import { faLinkedin, faFacebook, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import './profile.scss';
+import './navigation.scss';
 
 interface Props {
   linkedin: string;

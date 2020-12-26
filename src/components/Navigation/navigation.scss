@@ -1,4 +1,4 @@
-.profile {
+.navigation {
   min-width: 14rem;
   width: 14rem;
   margin-left: 2rem;
@@ -10,7 +10,7 @@
     font-size: 0.9rem;
   }
 
-  .bio-item {
+  .profile-item {
     margin-bottom: 0.8rem;
     display: flex;
     font-size: 0.9rem;
@@ -85,15 +85,27 @@
     }
   }
 
-  .categories {
+  .menus {
     margin-top: 2em;
     padding-top: 2em;
     border-top: 1px dotted grey;
-    .category {
+    .menu {
       display: flex;
       align-items: center;
       .title {
         margin-left: 1em;
+        &.selected {
+          font-weight: bold;
+          text-decoration: underline;
+        }
+      }
+    }
+    .posts {
+      margin-left: 1em;
+      display: flex;
+      align-items: center;
+      .title {
+        margin-left: .5em;
         &.selected {
           font-weight: bold;
           text-decoration: underline;

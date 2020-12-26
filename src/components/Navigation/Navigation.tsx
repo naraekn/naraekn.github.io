@@ -1,12 +1,12 @@
 import React from 'react';
 
-import AboutMe from './AboutMe';
-import Categories from './Categories';
+import Profile from './Profile';
+import Menu from './Menu';
 import SocialButtons from './SocialButtons';
-import './profile.scss';
 import config from '../../../_config';
+import './navigation.scss';
 
-export default function Profile () {
+export default function Navigation () {
   const { comment, name, company, location, email, website, linkedin, facebook, instagram, github } = config;
 
   const categories: string[] = [
@@ -17,8 +17,8 @@ export default function Profile () {
   ];
 
   return (
-    <div className="profile">
-      <AboutMe 
+    <div className="navigation">
+      <Profile 
         comment={comment}
         name={name}
         company={company}
@@ -32,7 +32,7 @@ export default function Profile () {
         instagram={instagram}
         github={github}
       />
-      <Categories 
+      <Menu 
         categories={categories}
       />
     </div>

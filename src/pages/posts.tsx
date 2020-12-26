@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import * as React from 'react';
+import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { FontAwesomeIcon as Fa } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -11,13 +9,14 @@ import Navigation from '../components/Navigation/Navigation';
 import './styles/index.scss';
 import PostList from '../components/PostList';
 
-interface IndexPageProps {
+interface Props {
   path: string;
   data: any;
 }
 
-const IndexPage = (props: IndexPageProps) => {
-  const { data } = props;
+export default function PostsPage ({
+  path, data,
+}: Props) {
   const posts = data.allMarkdownRemark.edges;
   const title = data.site.siteMetadata.title;
 
@@ -70,5 +69,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-export default IndexPage;

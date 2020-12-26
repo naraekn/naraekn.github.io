@@ -11,7 +11,7 @@ interface Props {
   website: string;
 }
 
-export default function AboutMe({
+export default function Profile({
   comment,
   name,
   location,
@@ -24,7 +24,7 @@ export default function AboutMe({
       { comment && <span className="comment">{comment}</span> }
 
       { name && (
-        <div className="bio-item name">
+        <div className="profile-item name">
           <div className="icon-wrap">
             <FontAwesomeIcon icon={faUserCircle} />
           </div>
@@ -33,7 +33,7 @@ export default function AboutMe({
       )}
 
       { company && (
-        <div className="bio-item company">
+        <div className="profile-item company">
           <div className="icon-wrap">
             <FontAwesomeIcon icon={faAddressCard} />
           </div>
@@ -42,7 +42,7 @@ export default function AboutMe({
       )}
 
       { location && (
-        <div className="bio-item location">
+        <div className="profile-item location">
           <div className="icon-wrap">
             <FontAwesomeIcon icon={faMapMarkerAlt} />
           </div>
@@ -51,7 +51,7 @@ export default function AboutMe({
       )}
 
       { email && (
-        <div className="bio-item email">
+        <div className="profile-item email">
           <div className="icon-wrap">
             <FontAwesomeIcon icon={faAt} />
           </div>
@@ -60,7 +60,7 @@ export default function AboutMe({
       )}
 
       { website && (
-        <div className="bio-item website">
+        <div className="profile-item website">
           <div className="icon-wrap">
             <FontAwesomeIcon icon={faLink} />
           </div>
