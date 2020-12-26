@@ -8,7 +8,7 @@ import { useColorMode } from 'theme-ui';
 
 import './header.scss';
 import { RootState } from '../../state/reducer';
-import { actionCreators } from '../../state/actions';
+import { actions } from '../../state/actions';
 import config from '../../../_config';
 
 interface headerPropsType {
@@ -44,7 +44,7 @@ const Header = (props: headerPropsType) => {
     }, ms + 100);
   }, [colorMode]);
 
-  const setPath = useCallback((path: string, size?: string) => dispatch(actionCreators.setPath(path, size)), []);
+  const setPath = useCallback((path: string, size?: string) => dispatch(actions.setPath(path, size)), []);
 
   useEffect(() => {
     const bio: HTMLDivElement | null = document.querySelector('.bio');

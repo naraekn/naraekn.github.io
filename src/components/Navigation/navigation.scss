@@ -91,7 +91,7 @@
     border-top: 1px dotted grey;
     .menu {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       .title {
         margin-left: 1em;
         &.selected {
@@ -101,16 +101,39 @@
       }
     }
     .posts {
-      margin-left: 1em;
-      display: flex;
-      align-items: center;
-      .title {
-        margin-left: .5em;
-        &.selected {
-          font-weight: bold;
-          text-decoration: underline;
+      opacity: 1;
+      animation-name: fadeIn;
+      animation-duration: .5s;   
+      animation-timing-function: ease-in-out; 
+      visibility: visible !important; 
+      .post {
+        margin-left: 1em;
+        display: flex;
+        align-items: center;
+        .title {
+          margin-left: .5em;
+          font-size: smaller;
+          transition: .3s;
+          &:hover {
+            color: rgb(200, 153, 203) !important;
+          }
+          &.selected {
+            font-weight: bold;
+            color: rgb(200, 153, 203) !important;
+            text-decoration: underline;
+          }
         }
       }
+      
     }
   }
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0.0;       
+  }
+  100% {
+      opacity: 1; 
+  }       
 }

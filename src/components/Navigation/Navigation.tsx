@@ -9,13 +9,6 @@ import './navigation.scss';
 export default function Navigation () {
   const { comment, name, company, location, email, website, linkedin, facebook, instagram, github } = config;
 
-  const categories: string[] = [
-    'Today I Leared',
-    '서평',
-    '스터디회고',
-    'Experience'
-  ];
-
   return (
     <div className="navigation">
       <Profile 
@@ -33,7 +26,7 @@ export default function Navigation () {
         github={github}
       />
       <Menu 
-        categories={categories}
+        categories={config.categories}
       />
     </div>
   );

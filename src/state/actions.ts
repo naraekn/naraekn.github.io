@@ -27,7 +27,7 @@ const setMenu = (menu: Menus) => {
   return { 
     type: SET_MENU, 
     payload: {
-      menu 
+      menu,
     }
   };
 }
@@ -41,7 +41,7 @@ const setCategory = (category: string) => {
   };
 }
 
-export const actionCreators = {
+export const actions = {
   setIsMobile,
   setPath,
   setMenu,

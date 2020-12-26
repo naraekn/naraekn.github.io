@@ -12,7 +12,7 @@ import { useColorMode } from 'theme-ui';
 import './layout.scss';
 import '../../utils/google-fonts.scss';
 import Header from '../Header';
-import { actionCreators } from '../../state/actions';
+import { actions } from '../../state/actions';
 import config from '../../../_config';
 import { throttle } from 'lodash';
 
@@ -48,7 +48,7 @@ const Layout = (props: LayoutPropsType) => {
   useEffect(() => {
     const md = new MobileDetect(window.navigator.userAgent);
     if (md.mobile()) {
-      dispatch(actionCreators.setIsMobile(true));
+      dispatch(actions.setIsMobile(true));
     }
 
     document.addEventListener('scroll', setTop);

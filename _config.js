@@ -31,9 +31,9 @@ module.exports = {
   enableSocialShare: true,        // Social share icon activation (Type of Value: Boolean. Not String)
   categories: [
     'Today I Leared',
-    '서평',
-    '스터디회고',
-    'Experience',
+    'Books / Documents',
+    'Retrospective',
+    'Etc',
   ],
 
   /** Optional */

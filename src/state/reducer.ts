@@ -44,10 +44,10 @@ const reducer = (state: RootState = initialState, action: any) => {
     });
   }
 
-  if (type === SET_CATEGORY) {
+  if (type === SET_CATEGORY) {    
     return ({
       ...state,
-      menu: payload.category
+      category: payload.category
     });
   }
 
