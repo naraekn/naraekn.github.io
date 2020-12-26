@@ -15,6 +15,7 @@ import Header from '../Header';
 import { actions } from '../../state/actions';
 import config from '../../../_config';
 import { throttle } from 'lodash';
+import Footer from './Footer';
 
 FaConfig.autoAddCss = false;
 
@@ -67,14 +68,7 @@ const Layout = (props: LayoutPropsType) => {
         <Header siteTitle={data.site.siteMetadata.title} />
         <div id="content">
           <main>{children}</main>
-          <footer>
-            <span>{`© ${new Date().getFullYear()} ${data.site.siteMetadata.author} | Initialized by `}</span>
-            <a href="https://github.com/junhobaik">JunhoBaik</a>
-            <span>{` | Developed by `}</span>
-            <a href="https://github.com/naraekn">NanKim</a>
-            <span>{` | Built with `}</span>
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+          <Footer author={data.site.siteMetadata.author}/>
         </div>
         <div
           id="top"
