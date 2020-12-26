@@ -1,0 +1,13 @@
+#aboutme {
+  max-width: 720px;
+  margin: 0 auto;
+  .content {
+    text-align: center;
+    font-size: smaller;
+    color: rgb(200, 153, 203) !important;
+    .icon {
+      margin-left: 1em;
+      color: rgb(200, 153, 203)
+    }
+  }
+}
