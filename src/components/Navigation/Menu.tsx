@@ -8,11 +8,7 @@ import { Categories, Menus } from '../../types/enums';
 import { actions } from '../../state/actions';
 import { RootState } from '../../state/reducer';
 
-interface Props {
-  categories: string[]
-}
-
-export default function Menu({ categories }: Props) {
+export default function Menu() {
   const { menu, category } = useSelector((state: RootState) => ({
     category: state.category,
     menu: state.menu,
@@ -43,6 +39,8 @@ export default function Menu({ categories }: Props) {
 
     return 'title';
   }
+
+  const categories = Object.values(Categories).filter((it) => it !== (Categories.None || Categories.All));
   
   return (
     <div className="menus">
@@ -91,7 +89,7 @@ export default function Menu({ categories }: Props) {
             <div className="post" key={it}>
               <a 
                 className={getClassName(it)}  
-                onClick={() => handleCategoryChange(it as Categories)}
+                onClick={() => handleCategoryChange(it)}
               >
                 {it}
               </a>

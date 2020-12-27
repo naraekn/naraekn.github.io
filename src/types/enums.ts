@@ -6,7 +6,7 @@ export enum Menus {
 
 export enum Categories {
   All = "All Posts",
-  TodayILeared = "Today I Learned",
+  TodayILearned = "Today I Learned",
   Books = "Books / Documents",
   Retrospective = "Retrospective",
   Etc = "Etc",

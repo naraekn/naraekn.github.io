@@ -25,9 +25,7 @@ export default function Navigation () {
         instagram={instagram}
         github={github}
       />
-      <Menu 
-        categories={config.categories}
-      />
+      <Menu />
     </div>
   );
 };
