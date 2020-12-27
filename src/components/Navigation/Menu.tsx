@@ -3,7 +3,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'gatsby';
 import { useDispatch, useSelector } from 'react-redux';
-import { Menus } from '../../types/enums';
+import { Categories, Menus } from '../../types/enums';
 
 import { actions } from '../../state/actions';
 import { RootState } from '../../state/reducer';
@@ -22,12 +22,17 @@ export default function Menu({ categories }: Props) {
 
   function handleMenuChange(menu: Menus) {
     if(menu !== Menus.Posts) {
-      dispatch(actions.setCategory(''));
+      dispatch(actions.setCategory(Categories.None));
     }
+
+    if(menu === Menus.Posts) {
+      dispatch(actions.setCategory(Categories.All));
+    }
+
     dispatch(actions.setMenu(menu));
   }
 
-  function handleCategoryChange(category: string) {
+  function handleCategoryChange(category: Categories) {
     dispatch(actions.setCategory(category));
   }
 
@@ -86,7 +91,7 @@ export default function Menu({ categories }: Props) {
             <div className="post" key={it}>
               <a 
                 className={getClassName(it)}  
-                onClick={() => handleCategoryChange(it)}
+                onClick={() => handleCategoryChange(it as Categories)}
               >
                 {it}
               </a>

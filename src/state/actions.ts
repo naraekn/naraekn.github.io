@@ -1,4 +1,4 @@
-import { Menus } from "../types/enums";
+import { Categories, Menus } from "../types/enums";
 
 export const SET_IS_MOBILE = 'SET_IS_MOBILE';
 export const SET_PATH = 'SET_PATH';
@@ -32,7 +32,7 @@ const setMenu = (menu: Menus) => {
   };
 }
 
-const setCategory = (category: string) => {
+const setCategory = (category: Categories) => {
   return { 
     type: SET_CATEGORY,
     payload: {

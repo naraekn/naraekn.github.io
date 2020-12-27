@@ -3,3 +3,12 @@ export enum Menus {
   AboutMe,
   Posts,
 }
+
+export enum Categories {
+  All = "All Posts",
+  TodayILeared = "Today I Learned",
+  Books = "Books / Documents",
+  Retrospective = "Retrospective",
+  Etc = "Etc",
+  None = ""
+}

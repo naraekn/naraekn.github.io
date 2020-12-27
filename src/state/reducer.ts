@@ -1,4 +1,4 @@
-import { Menus } from '../types/enums';
+import { Categories, Menus } from '../types/enums';
 import { SET_CATEGORY, SET_IS_MOBILE, SET_MENU, SET_PATH } from './actions';
 
 export interface RootState {
@@ -14,7 +14,7 @@ export const initialState: RootState = {
   size: '25px',
   isMobile: false,
   menu: Menus.Home,
-  category: '',
+  category: Categories.None,
 };
 
 const reducer = (state: RootState = initialState, action: any) => {
