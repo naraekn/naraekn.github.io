@@ -1,0 +1,37 @@
+@import '~@fullcalendar/daygrid/main.css';
+@import '../../utils/variables.scss';
+
+.fc {
+  font-family: 'Raleway', 'Nanum Gothic';
+  
+  table {
+    margin: 0;
+  }
+
+  .fc-button {
+    font-size: .8em;
+  }
+  .fc-button-primary {
+    background-color: var(--fc-button-bg-color, rgb(200, 153, 203));
+    border-color: var(--fc-button-border-color, rgb(200, 153, 203));
+  }
+  .fc-toolbar-title {
+    font-size: 1.3em;
+    font-family: 'Raleway', 'Nanum Gothic';
+  }
+}
+
+.today-i-learned {
+  max-width: 640px;
+
+  .category-title {
+    margin: 0 1em 2rem 1rem;
+    color: #bbb !important;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .calendar {
+    margin: 0 1rem;
+  }
+}

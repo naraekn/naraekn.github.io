@@ -267,7 +267,6 @@ export const pageQuery = graphql`
         tags
         keywords
         update(formatString: "MMM DD, YYYY")
-        subtitle
       }
     }
   }

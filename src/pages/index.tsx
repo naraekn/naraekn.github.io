@@ -63,7 +63,6 @@ export const pageQuery = graphql`
             update(formatString: "MMM DD, YYYY")
             title
             tags
-            category
           }
         }
       }
