@@ -16,14 +16,14 @@ module.exports = {
   /** Home > Bio information*/
   comment: `Nan's Development Blog`,
   name: 'Nan Kim',
-  company: '',
+  company: 'Market Kurly',
   location: 'Korea',
   email: 'naraekn@gmail.com',
   website: 'https://naraekn.github.io',                                   // ex.'https://junhobaik.github.io'
   linkedin: '',                                                          // ex.'https://www.linkedin.com/in/junho-baik-16073a19ab'
   facebook: '',                                                          // ex.'https://www.facebook.com/zuck' or 'https://www.facebook.com/profile.php?id=000000000000000'
   instagram: 'https://www.instagram.com/nan_kim_12/',                                                         // ex.'https://www.instagram.com/junhobaik'
-  github: 'https://github.com/naraekn?tab=repositories',                                                        // ex.'https://github.com/junhobaik'
+  github: 'https://github.com/naraekn',                                                        // ex.'https://github.com/junhobaik'
 
   /** Post */
   enablePostOfContents: true,     // TableOfContents activation (Type of Value: Boolean. Not String)
