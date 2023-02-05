@@ -1,6 +1,6 @@
 module.exports = {
   /** Site MetaData (Required all)*/
-  title: `Nana`,                          // (* Required)
+  title: `Nan`,                          // (* Required)
   description: `Nan's Development Blog`,          // (* Required)
   author: `NanKim`,                         // (* Required)
   language: 'ko-KR',                        // (* Required) html lang, ex. 'en' | 'en-US' | 'ko' | 'ko-KR' | ...
@@ -14,9 +14,9 @@ module.exports = {
     // If the file does not exist, it is replaced by a random image.
 
   /** Home > Bio information*/
-  comment: `Nan's Development Blog`,
+  comment: `Nan's Blog`,
   name: 'Nan Kim',
-  company: 'Market Kurly',
+  company: 'Banksalad',
   location: 'Korea',
   email: 'naraekn@gmail.com',
   website: 'https://naraekn.github.io',                                   // ex.'https://junhobaik.github.io'
